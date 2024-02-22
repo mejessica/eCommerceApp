@@ -1,28 +1,82 @@
 {{page-title "Category"}}
-<div class="row">
+<div class="col-12">
+    <div class="row">
+        <div class="col-md-9">
+            <form class="form-inline">
+                <div class="form-group" style="display: inline-block;">
+                    {{input type="text" class="form-control" value=filter id="search" placeholder="Search Products..."}}
+                </div>
+                <div style="display: inline-block;">
+                    <button type="submit" {{action 'search' }} class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
 
-    {{#each @model as |item|}}
+        <div class="col-md-3 sorting-div">
+            <button class="btn btn-primary" type="button" {{action 'sortasc' }}>Sort Asc.</button>
+            <button class="btn btn-primary" type="button" {{action 'sortdsc' }}>Sort Dsc.</button>
+            <button class="btn btn-danger" type="button" {{action 'clear' }}>Clear</button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        {{#if this.appliedfilter }}
+        {{#each filteredProducts as |item|}}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <br>
+            <LinkTo class="category_linkto" @route="category.item" @model={{item.id}}>
+                <CategoryProduct @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}}
+                    @price={{item.price}} />
+            </LinkTo>
+        </div>
+        {{/each}}
+
+
+        {{else if this.sorted}}
+        {{#each this.sorted as |item|}}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <br>
+            <AdminProduct @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}}
+                @price={{item.price}} @route="admin.edit" @model={{item.id}} />
+        </div>
+        {{/each}}
+
+        {{else}}
+        {{#each @model as |item|}}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <br>
+            <LinkTo class="category_linkto" @route="category.item" @model={{item.id}}>
+                <CategoryProduct @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}}
+                    @price={{item.price}} />
+            </LinkTo>
+        </div>
+        {{/each}}
+
+        {{/if}}
+
+        {{!-- {{#each @model as |item|}}
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-           <br>
+            <br>
 
-           <LinkTo  class="category_linkto" @route="category.item" @model = {{item.id}} >
-           
-           <CategoryProduct 
-           @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}} @price={{item.price}}>
-           </CategoryProduct>
-           </LinkTo>
+            <LinkTo class="category_linkto" @route="category.item" @model={{item.id}}>
 
-           {{!-- <div class="card">
+                <CategoryProduct @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}}
+                    @price={{item.price}}>
+                </CategoryProduct>
+            </LinkTo>
+
+            {{!-- <div class="card">
                 <img class="card-img-top img-fluid" src={{item.imglink}} alt="product image">
                 <div class="card-body">
                     <h6 class="card-title ">{{item.product_title}}</h6>
-                    <p class="card-text d-inline-block text-truncate productdesc" >{{item.desc}}</p>
-                    <h5  class="card-text">$ {{item.price}}</h5>
-                </div>    
+                    <p class="card-text d-inline-block text-truncate productdesc">{{item.desc}}</p>
+                    <h5 class="card-text">$ {{item.price}}</h5>
+                </div>
             </div> --}}
-        </div> 
-        
-    {{/each}}
+        </div>
 
-</div>
+        {{/each}} --}}
+
+    </div>

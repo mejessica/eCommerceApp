@@ -27,8 +27,17 @@
 				    <button type="submit" {{action 'search'}} class="btn btn-primary">Search</button>
           </div>
 				</form>
+      </div>
+            {{!-- sorting div --}}
+        <div class="col-md-4 sorting-div">
+            <button  class="btn btn-primary" type="button" {{action 'sortasc'}}>Sort Asc.</button>
+            <button class="btn btn-primary" type="button" {{action 'sortdsc'}}>Sort Dsc.</button>
+            <button class="btn btn-danger" type="button" {{action 'clear'}}>Clear</button>
+        </div>
             
 		</div>
+    
+    
 
       {{!-- product div --}}
     <div class="row">
@@ -41,6 +50,15 @@
           <AdminProduct @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}} @price={{item.price}} @route="admin.edit" @model={{item.id}}/>
           </div> 
         {{/each}}
+      
+      {{else if this.sorted}}
+      {{#each this.sorted as |item|}}
+
+          <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <br>
+          <AdminProduct @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}} @price={{item.price}} @route="admin.edit" @model={{item.id}}/>
+          </div> 
+      {{/each}}
         
         
       {{else}}

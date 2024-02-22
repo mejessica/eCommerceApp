@@ -17,6 +17,7 @@ export default class AdminEditRoute extends Route {
   //   };
   //   return product;
   // }
+
   model(params) {
     let product = this.store.findRecord('product', params.id); //findRecord method do store busca o produto. o store encontra o record com base no product e no id
     //Neste caso, nosso produto estará disponível no cache local da loja pois a adminrota recupera todos os produtos para colocá-los na adminrota.
