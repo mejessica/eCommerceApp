@@ -1,8 +1,10 @@
 import Route from '@ember/routing/route';
-import { categories } from '../data/categories';
+import { inject as service } from '@ember/service'
 
 export default class IndexRoute extends Route {
+  @service store
+
   model() {
-    return categories;
+    return this.store.findAll('categorie')
   }
 }

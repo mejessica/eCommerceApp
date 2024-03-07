@@ -3,7 +3,7 @@
 <div class="edit">
     <h3>Edit Product</h3>
 
-    <form>
+    <form action="/edit" method="post"> 
         <div class="form-group">
             <label for="exampleFormControlInput1">Title</label><br>
             {{input type="text" class="form-control" value=@this.model.product_title placeholder = "Add Title..."}}
