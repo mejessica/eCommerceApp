@@ -18,15 +18,6 @@ export default class AdminEditController extends Controller {
 
     let imglink = this.get('model.imglink');
 
-    // let changed_values = {
-    //   title: title,
-    //   desc: desc,
-    //   price: price,
-    //   category: category,
-    //   imglink: imglink,
-    // };
-    // console.log(changed_values);
-
     //We will update it in our database
 
     this.store.findRecord('product', id).then(function (product) {

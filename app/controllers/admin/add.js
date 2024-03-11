@@ -13,16 +13,6 @@ export default class AdminAddController extends Controller {
 
     let imglink = this.imglink;
 
-    // let obj = {
-    //   title: title,
-    //   desc: desc,
-    //   price: price,
-    //   category: category,
-    //   imglink: imglink,
-    // };
-
-    // console.log(obj);
-
     //exemplo de integração com o banco
     var newproduct = this.store.createRecord('product', {
       //

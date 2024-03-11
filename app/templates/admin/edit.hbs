@@ -6,17 +6,17 @@
     <form action="/edit" method="post"> 
         <div class="form-group">
             <label for="exampleFormControlInput1">Title</label><br>
-            {{input type="text" class="form-control" value=@this.model.product_title placeholder = "Add Title..."}}
+            <input type="text" class="form-control" value={{@this.model.productTitle}} placeholder = "Add Title..."/>
         </div>
         <br>
         <div class="form-group">
             <label for="exampleFormControlInput1">Description</label><br>
-            {{input type="text" class="form-control" value=@this.model.desc placeholder = "Add Desc..."}}
+            <input type="text" class="form-control" value={{@this.model.desc}} placeholder = "Add Desc..."/>
         </div>
         <br>
         <div class="form-group">
             <label for="exampleFormControlInput1">Price</label><br>
-            {{input type="number" class="form-control" min = "1" step="any" value=@this.model.price placeholder = "Add Price..."}}
+            <input type="number" class="form-control" min = "1" step="any" value={{@this.model.price}} placeholder = "Add Price..."/>
         </div>
         <br>
         <div class="form-group">
@@ -32,7 +32,7 @@
         <br>
         <div class="form-group">
             <label for="exampleFormControlInput1">Image Link</label><br>
-            {{input type="text" class="form-control" value=@this.model.imglink placeholder = "Add Image Link..."}}
+            <input type="text" class="form-control" value={{@this.model.imglink}} placeholder = "Add Image Link..."/>
         </div>
         <br>
     </form>

@@ -44,10 +44,11 @@
 
         {{else}}
         {{#each @model as |item|}}
+        {{log 'item' item}}
         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
             <br>
             <LinkTo class="category_linkto" @route="category.item" @model={{item.id}}>
-                <CategoryProduct @source={{item.imglink}} @title={{item.product_title}} @desc={{item.desc}}
+                <CategoryProduct @source={{item.imglink}} @title={{item.productTitle}} @desc={{item.desc}}
                     @price={{item.price}} />
             </LinkTo>
         </div>

@@ -8,9 +8,11 @@
     <div class="row">
 
         {{#each @model as |item|}}
+{{log item}}
+
 
         <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-             <LinkTo class="category_linkto" @route="category" @model="{{item.category_id}}" >
+             <LinkTo class="category_linkto" @route="category" @model={{item.id}}>
             <br>
 
             <div class="card category">

@@ -4,11 +4,16 @@ import {inject as service} from '@ember/service'
 export default class CategoryIndexRoute extends Route {
     @service store
 
-    model(params){
+    model(){
+        let param = this.paramsFor('category')
+        
+        console.log(param)
+        console.log(param.id)
+       
+
         return this.store.query('product', {
-            filter:{
-                category_id: params.id,
-            },
+            category_id: param.id,  
         });
+
     }
 }

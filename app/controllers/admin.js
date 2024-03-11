@@ -20,7 +20,7 @@ export default class AdminController extends Controller {
     let filtered = products.filter(function (product) {
       //filtramos nossos produtos onde o titulo ou descrição do produto corresponde ao fitlro
       return (
-        product.get('product_title').match(rx) || product.get('desc').match(rx)
+        product.get('productTitle').match(rx) || product.get('desc').match(rx)
       );
     });
 
