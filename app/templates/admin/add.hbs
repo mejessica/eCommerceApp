@@ -2,22 +2,22 @@
 <div class="add">
     <form action="/add" method="post">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Title</label><br>
-            <input type="text" class="form-control" value={{this.model.product_title}} placeholder = "Add Title..."/>
+            <label for="title">Title</label><br>
+            <input type="text" id="title" class="form-control" onChange={{this.setInput('productTitle', event.target.value)}} value={{this.model.productTitle}} placeholder = "Add Title..."/>
         </div>
         <br>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Description</label><br>
-            <input type="text" class="form-control" value={{this.model.desc}} placeholder = "Add Desc..."/>
+            <label for="description">Description</label><br>
+            <input type="text" id="description" class="form-control"  value={{this.model.desc}} placeholder = "Add Desc..."/>
         </div>
         <br>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Price</label><br>
-            <input type="number" class="form-control" min = "1" step="any" value={{this.model.price}} placeholder = "Add Price..."/>
+            <label for="price">Price</label><br>
+            <input type="number" id="price" class="form-control" min = "1" step="any"  value={{this.model.price}} placeholder = "Add Price..."/>
         </div>
         <br>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Category</label>
+            <label for="category">Category</label>
             <select class="form-select" aria-label="Default select example" id="category">
                 <option selected value="">Select a category</option>
                 <option value="men">Men</option>
@@ -28,13 +28,12 @@
         </div>
         <br>
         <div class="form-group">
-            <label for="exampleFormControlInput1">Image Link</label><br>
-            <input type="text" class="form-control" value={{this.model.imglink}} placeholder = "Add Image Link..."/>
+            <label for="imagelink">Image Link</label><br>
+            <input type="text" id="imagelink" class="form-control" value={{this.model.imglink}} placeholder = "Add Image Link..."/>
         </div>
         <br>
         </form>
          <button class="btn btn-success" type="submit" {{on 'click' this.addProduct}}>Submit</button> 
         <LinkTo class='btn btn-primary' @route="admin" >Close</LinkTo>
 
-    
 </div>
