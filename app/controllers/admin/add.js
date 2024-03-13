@@ -2,22 +2,29 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { set } from '@ember/object';
+import { tracked } from '@glimmer/tracking'
 
 export default class AdminAddController extends Controller {
   @service store;
+  
+  @tracked desc
+  @tracked productTitle
+  @tracked price
+  @tracked category
+  @tracked imglink
 
   @action
   addProduct() {
-
-    let desc = this.model.desc;
-    let price = this.model.price;
+    let productTitle = this.productTitle;
+    let desc = this.desc;
+    let price = this.price;
     let e = document.getElementById('category');
     let category = e.options[e.selectedIndex].value;
-    let imglink = this.model.imglink;
+    let imglink = this.imglink;
 
 
     let newProduct = this.store.createRecord('product', {
-      productTitle: this.productTitle,
+      productTitle: productTitle,
       desc: desc,
       price: price,
       category_id: category,
@@ -25,12 +32,6 @@ export default class AdminAddController extends Controller {
     });
 
     newProduct.save();
-
-    function setInput(tipo, valor) {
-      set(this.model, tipo, valor);
-    }
-
-    setInput();
 
     alert('Product Added');
 
@@ -41,8 +42,11 @@ export default class AdminAddController extends Controller {
       price: '',
       imglink: '',
     });
-    e.value = '';
   }
 
+  @action
+  setInput(tipo, event){
+    set(this, tipo, event.target.value);
+  }
 
 }

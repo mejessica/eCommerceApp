@@ -3,41 +3,41 @@
 <div class="edit">
     <h3>Edit Product</h3>
 
-    <form action="/edit" method="post"> 
+    <div> 
         <div class="form-group">
             <label for="title">Title</label><br>
-            <input type="text" id="title" class="form-control" value={{@this.model.productTitle}} placeholder = "Add Title..."/>
+        <input type="text" id="title" class="form-control" {{on 'change' (fn this.setInput 'productTitle')}} value={{@this.model.productTitle}} placeholder = "Add Title..."/>
         </div>
         <br>
         <div class="form-group">
             <label for="description">Description</label><br>
-            <input type="text" id="description" class="form-control" value={{@this.model.desc}} placeholder = "Add Desc..."/>
+            <input type="text" id="description" class="form-control" {{on 'change' (fn this.setInput 'desc')}} value={{@this.model.desc}} placeholder = "Add Desc..."/>
         </div>
         <br>
         <div class="form-group">
             <label for="price">Price</label><br>
-            <input type="number" id="price" class="form-control" min = "1" step="any" value={{@this.model.price}} placeholder = "Add Price..."/>
+            <input type="number" id="price" class="form-control"  min = "1" step="any" {{on 'change' (fn this.setInput 'price')}} value={{@this.model.price}} placeholder = "Add Price..."/>
         </div>
         <br>
         <div class="form-group">
             <label for="category">Category</label>
             <select class="form-select" aria-label="Default select example" id="category">
-                <option selected value={{@model.category}}>Change the category</option>
-                <option value="men">Men</option>
-                <option value="women">Women</option>
-                <option value="kids">Kids</option>
-                <option value="homeaccessories">Home Accessories</option>
+                <option selected {{on 'change' (fn this.setInput 'category_id')}} value={{@this.model.category_id}}>Change the category</option>
+                <option value="2">Men</option>
+                <option value="3">Women</option>
+                <option value="5">Kids</option>
+                <option value="4">Home Accessories</option>
             </select>
         </div>
         <br>
         <div class="form-group">
             <label for="imagelink">Image Link</label><br>
-            <input type="text" id="imagelink" class="form-control" value={{@this.model.imglink}} placeholder = "Add Image Link..."/>
+            <input type="text" id="imagelink" class="form-control" {{on 'change' (fn this.setInput 'imagelink')}} value={{@this.model.imglink}} placeholder = "Add Image Link..."/>
         </div>
         <br>
-    </form>
+    </div>
 
     <button class="btn btn-success" type="submit" {{on 'click' this.editProduct}}>Done</button>
     <button class='btn btn-danger' type="button" {{on 'click' this.deleteProduct}}>Delete</button>
-
+   
 </div>
