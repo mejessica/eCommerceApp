@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service'; //objeto que mantem o estado de um atributo especifico
 
@@ -23,20 +23,14 @@ export default class CategoryIndexController extends Controller {
   @tracked filteredProducts; //atribui os produtos resultantes com base no filtro. isso nos permite carregar os produtos de filtro com base nesta prop
   @tracked sorted; //definimos a sorted prop
   pageid; //armazenamos o valor category_iddo nosso URL e consultamos os produtos classificados com base nesse ID
+  @service store;
+  @tracked filter;
 
   @action
-  search() {
-    var filter = this.filter;
-    this.appliedfilter = filter;
-
-    var rx = new RegExp(filter, 'gi');
-
-    var products = this.model;
-
-    let filtered = products.filter(function (product) {
-      return product.get('product_title').match(rx) || product.get('desc').match(rx);
-    });
-    this.filteredProducts = filtered;
+  async search() {
+    this.filteredProducts = await this.store.query('product', {product_title: this.filter});
+    this.appliedfilter = true;
+    console.log(this.filteredProducts);
   }
 
   @action
@@ -61,6 +55,11 @@ export default class CategoryIndexController extends Controller {
     this.appliedfilter = ''
     this.sorted = ''
     this.filteredProducts = ''
+  }
+
+  @action
+  setInput(tipo, event){
+    set(this, tipo, event.target.value);
   }
 }
 
