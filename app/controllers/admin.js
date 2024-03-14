@@ -16,10 +16,11 @@ export default class AdminController extends Controller {
     this.appliedfilter = true;
     console.log(this.filteredProducts);
   }
+
   @action
   sortasc(){
     this.sorted = this.get('store').query('product',{orderBy : 'price'}); //o query com o price para orderBy permite classificar os produtos em ordem crescente. atriuimos a sorted
-    }
+  }
 
   @action
   sortdsc(){ // utilizamos o query()método da loja para ordenar os produtos em ordem crescente.
