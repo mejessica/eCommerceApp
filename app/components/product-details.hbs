@@ -9,8 +9,13 @@
         </div>
         <h6 class="descpd">{{@desc}}</h6>
         <h5 class="pricepd">$ {{@price}}</h5>
-        <button class="btn btn-success btnpd" type="button">Add to Cart</button>
 
-        {{log @title}}
+        <div>
+            <input type="hidden" name="titleProduct" {{on 'change' (fn this.setInput 'titleProduct')}} value="{{@this.args.model.titleProduct}}">
+            <input type="hidden" name="id" {{on 'change' (fn this.setInput 'id')}} value="{{@this.args.model.id}}">
+            <input type="number" name="qnt" {{on 'change' (fn this.setInput 'qnt')}} value="{{@this.model.qnt}}">
+            <button class="btn btn-success btnpd" {{on 'click' this.addProduct}} type="button">Add to Cart</button>
+        </div>
+
     </div>
-</div> 
+</div>

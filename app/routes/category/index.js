@@ -9,7 +9,7 @@ export default class CategoryIndexRoute extends Route {
         
         console.log(param)
         console.log(param.id)
-       
+       console.log('bbbbbbbbbbbbb')
 
         return this.store.query('product', {
             category_id: param.id,  

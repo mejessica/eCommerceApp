@@ -1,6 +1,7 @@
 {{page-title "Item"}}
 
 {{log @model}}
-<ProductDetails 
+<ProductDetails
+@model={{@model}} 
 @source={{@model.imglink}} 
 @title={{@model.productTitle}} @desc= {{@model.desc}} @price={{@model.price}}/>
