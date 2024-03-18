@@ -1,0 +1,18 @@
+{{page-title "item_category"}}
+
+{{log @model}}
+<div class="row pdetails">
+
+    <div class="col-md-5 col-sm-12">
+        <img class="imgpd img-fluid" src={{@model.productCart.imglink}} alt="product img">
+    </div>
+    <div class="col-md-1 col-sm-0" style="margin-top: 2vh;"></div>
+    <div class="col-md-6 col-sm-12">
+        <div class="row">
+            <h2>{{@model.productCart.productTitle}}</h2>
+        </div>
+        <h6 class="descpd">{{@model.productCart.desc}}</h6>
+        <h5 class="pricepd">Preço: $ {{@model.productCart.price}}</h5>
+          <h5 class="pricepd">Quantidade: {{@model.qnt}}</h5>
+    </div>
+</div>

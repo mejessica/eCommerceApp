@@ -1,28 +1,28 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import { hash } from 'rsvp';
 
 export default class CartRoute extends Route {
     @service store
 
     async model() {
-        let cart = await this.store.findAll('cart');
-        let product = await this.store.findAll('product');
-        let ids = cart.filter(cart=>cart.productId === product.id);
 
-        // product.forEach(element => {
-        //     element.filter((e) => {
-        //         e.id === cart.product_id 
-        //     })
+        return hash({
+            cart: this.store.findAll('cart'),
+            products: this.store.findAll('product'),
+            
+        }).then(({ cart, products }) => {
+            
+            cart.map((cartItem) => {
+                let productForCart = products.filter((prod) => {
+                    return prod.id == cartItem.productId
+                })
 
-        //     element.qnt = cart.qnt
-        // });
-       
-            return {
-                cart: ids,
-                product: product,
+                cartItem.productCart = productForCart[0]
+            })
 
-            };
-        
+            return cart
+
+        });
     }
-
-}
+};

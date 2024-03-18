@@ -1,0 +1,33 @@
+{{page-title "Cart"}}
+{{outlet}}
+<div class="row">
+
+
+    <h2>Cart!</h2>
+    {{#each @model as |item|}}
+{{!-- 
+    {{#if item.productCart}} --}}
+    <br>
+    <div class="card w-25 p-3">
+        {{log item.productCart}}
+        <br>
+        <img class="card-img-top img-fluid" src={{item.productCart.imglink}} alt="product image">
+        <br>
+        <LinkTo class="category_linkto" @route="cart.item" @model={{item}} >
+            <h6 class="card-title ">{{item.productCart.productTitle}}</h6>
+        </LinkTo>
+        <p class="card-text d-inline-block productdesc">{{item.productCart.desc}}</p>
+        <h5 class="card-text">$ {{item.productCart.price}}</h5>
+        <h5 class="card-text">quantidade: {{item.qnt}}</h5>
+        <br>
+        <br>
+    </div>
+
+    {{!-- 
+    {{log 'produto' item.productCart.id}}
+    {{log 'cart' item.cartItem.productId}} --}}
+    {{!-- {{/if}} --}}
+    {{/each}}
+
+
+</div>
